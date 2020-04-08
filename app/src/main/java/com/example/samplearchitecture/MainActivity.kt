@@ -1,21 +1,23 @@
 package com.example.samplearchitecture
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
+import com.example.samplearchitecture.core.android.viewbindingutil.viewBinding
+import com.example.samplearchitecture.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
 class MainActivity : AppCompatActivity() {
+    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        setContentView(binding.root)
 
-        fab.setOnClickListener { view ->
+        setSupportActionBar(toolbar)
+        binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
