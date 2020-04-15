@@ -15,10 +15,10 @@ class SampleActivityViewModel : BaseViewModel() {
                 .delay(5, SECONDS)
                 .doAfterTerminate {
                     showLoadingEvent.postValue(false)
+                    showSnackbarEvent.call()
                 }
                 .doOnSubscribe {
                     showLoadingEvent.postValue(true)
-                    showSnackbarEvent.call()
                 }.subscribe()
         }
     }
